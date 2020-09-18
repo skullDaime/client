@@ -3,7 +3,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
+        marginTop: 0,
+        margin: 0,
         },
 
     mediumLabel:{
@@ -13,18 +14,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#cc4433',
     },
     categoryCont:{
+      margin: 5,
     },
     categoryText:{
         width: 95,
         color: '#66ccaa',
         fontWeight: 'bold',
         textAlign: "center",
-        marginTop: -30,
+        marginTop: -25,
         backgroundColor: '#cc4433',
         borderRadius: 5,
     },
       scrollView: {
-        backgroundColor: 'pink',
+        backgroundColor: '#FFFFFF',
         marginHorizontal: 20,
         height: 200,
       },
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
       categoryImage:{
           height: 150,
           width: 150,
-          margin:5,
+          margin:0,
       },
       ProductImage:{
         height: 100,
