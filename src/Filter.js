@@ -57,7 +57,7 @@ class Filter extends Component{
                                                         <Image style={styles.categoryImage} source={{uri: 'https://amazonasatual.com.br/wp-content/uploads/2014/10/supermercado.jpg'}}></Image>
                                                         <Text style={styles.categoryText}>{productData.name}</Text>
                                                         <Text style={styles.Text}>{productData.description}</Text>
-                                                        <Button title={'Prosseguir'} ></Button>
+                                                        <Button title={'Prosseguir'}></Button>
                                                     </View>
                                                 )
 

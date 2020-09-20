@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, View, ActivityIndicator,TextInput, Button, Text, Image, SafeAreaView, ScrollView} from 'react-native';
+import {StyleSheet, AsyncStorage,View, ActivityIndicator,TextInput, Button, Text, Image, SafeAreaView, ScrollView} from 'react-native';
 import 'react-native-gesture-handler';
 
 import {client} from './index';
@@ -61,9 +61,10 @@ class Home extends Component{
         if (!query) return null;
         if (!stateProducts) return null;  
         return(          
-        <ScrollView style={styles.container}>
+        <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
+            <Button onPress={() => this.props.navigation.navigate('User')} title={'Dados de Usuário'}></Button>
                 <Text style={styles.mediumLabel} >CATEGORIAS</Text>
-                    <ScrollView horizontal={true} style={styles.scrollView}>
+                    <ScrollView showsHorizontalScrollIndicator={false}  horizontal={true} style={styles.scrollView}>
                         <ApolloProvider client={client}>
                             <Query query={gql`${query}`} >
                                 {({ loading, error, data }) => {
@@ -119,8 +120,9 @@ class Home extends Component{
     
 }
 
-/*Home.navigationOptions = {
+Home.navigationOptions = {
+    headerTitleStyle: { alignSelf: 'center'},
     title: 'Home',
-  }*/
+  }
 
   export default Home;

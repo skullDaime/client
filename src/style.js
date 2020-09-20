@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         height: 200,
       },
       text: {
-        fontSize: 42,
+        fontSize: 12,
         color: '#ccff33',
       },
       categoryImage:{

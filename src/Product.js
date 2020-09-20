@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Input, TextIn, View, ActivityIndicator, TextInput, Button, Text, Image, SafeAreaView, ScrollView} from 'react-native';
+import {StyleSheet, Input, AsyncStorage, TextIn, View, ActivityIndicator, TextInput, Button, Text, Image, SafeAreaView, ScrollView} from 'react-native';
 
 import { ApolloProvider, Query, InMemoryCache } from "react-apollo";
 import ApolloClient from "apollo-boost";
@@ -11,12 +11,21 @@ import {client} from './index';
 
 export const AppContext = React.createContext({data:{oneProduct:null}})
 
+//session CREATE
+/*_storeData = async () => {
+
+    await AsyncStorage.setItem(
+        '@sessionId: 1'
+      );
+}*/
+
+//Screen Class
 class Product extends Component{
     constructor(){
     super()
     } 
     state = {
-        stateProduct: null,
+        stateAddress: null,
     }    
     componentDidMount(){
         const stateProduct = this.getPorduct();
@@ -25,11 +34,15 @@ class Product extends Component{
         });
        
     }
-    
+ //Session READ   
+    //async getUser(){
+       // return await AsyncStorage.getItem('sessionId');
+   // }
+//
     getPorduct(){
         return `
         query{
-            oneProduct(id: ${this.props.navigation.getParam('ID', 2)}){
+            oneProduct(id: ${this.props.navigation.getParam('ID')}){
                 id
                 name
                 description
@@ -61,7 +74,7 @@ class Product extends Component{
                                                     <Text style={styles.categoryText}>{productData.name}</Text>
                                                     <Text style={styles.Text}>{productData.description}</Text>
                                                     <TextInput style={{width:60, borderColor:'gray'}} keyboardType={"number-pad"}></TextInput>
-                                                    <Button title={'Prosseguir'} onPress={() => this.props.navigation.navigate('Filter')}></Button>
+                                                    <Button title={'Prosseguir'} onPress={() => this.props.navigation.navigate('Address', {productId:this.props.navigation.getParam('ID')})}></Button>
                                                 </View>
                                                 )
 
@@ -71,12 +84,14 @@ class Product extends Component{
                             </ApolloProvider>
                             <Text style={styles.text}>{this.props.fromHomeProductId}</Text>
                             
+                            
         </ScrollView>
         )
     }
 }
 
 Product.navigationOptions = {
+    headerTitleStyle: { alignSelf: 'center'},
     title: 'Product',
   }
 
